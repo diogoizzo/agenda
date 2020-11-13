@@ -9,6 +9,8 @@
       <%- include('includes/messages')%>
       <div class="responsive-table">
         <table class="table my-3">
+          <% if (user) { %>
+          <% if (contatos.length > 0) {%>
           <% contatos.forEach(contato => { %>
             <tr>
               <td><%= contato.nome %></td>
@@ -19,6 +21,12 @@
               <td><a class="text-danger" href="/contato/delete/<%= contato._id %>">Excluir</a></td>
             </tr>
           <% }); %>
+          <% } else { %>
+            <p class="text-center lead">Não existem contatos cadastrados</p>
+          <% } %>
+          <% } else { %>
+            <p class="text-center lead">Você precisa fazer login para ver os contatos</p>
+          <% } %>
         </table>
       </div>
     </div>
